@@ -3,7 +3,9 @@
   "version": "1.0.0",
   "description": "Parses a formatted number from a string and returns a number",
   "main": "lib/parseFormattedNumber.js",
-  "files": ["lib"],
+  "files": [
+    "lib"
+  ],
   "scripts": {
     "build": "babel --out-dir lib src",
     "precommit": "lint-staged",
@@ -40,5 +42,8 @@
     "jest": "^22.4.2",
     "lint-staged": "^7.0.0",
     "prettier": "^1.11.1"
+  },
+  "dependencies": {
+    "escape-string-regexp": "^1.0.5"
   }
 }
