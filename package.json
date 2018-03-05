@@ -1,0 +1,44 @@
+{
+  "name": "parse-formatted-number",
+  "version": "1.0.0",
+  "description": "Parses a formatted number from a string and returns a number",
+  "main": "lib/parseFormattedNumber.js",
+  "files": ["lib"],
+  "scripts": {
+    "build": "babel --out-dir lib src",
+    "precommit": "lint-staged",
+    "prepare": "npm run build",
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jacobbuck/parse-formatted-number.git"
+  },
+  "keywords": [
+    "currency",
+    "float",
+    "formatted",
+    "int",
+    "money",
+    "number",
+    "parse",
+    "parser",
+    "string"
+  ],
+  "author": "Jacob Buck <buck.jacob@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/jacobbuck/parse-formatted-number/issues"
+  },
+  "homepage": "https://github.com/jacobbuck/parse-formatted-number#readme",
+  "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-plugin-transform-es2015-modules-commonjs": "^6.26.0",
+    "babel-plugin-transform-object-rest-spread": "^6.26.0",
+    "babel-preset-env": "^1.6.1",
+    "husky": "^0.14.3",
+    "jest": "^22.4.2",
+    "lint-staged": "^7.0.0",
+    "prettier": "^1.11.1"
+  }
+}
