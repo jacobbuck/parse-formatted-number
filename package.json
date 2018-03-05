@@ -1,11 +1,10 @@
 {
   "name": "parse-formatted-number",
   "version": "1.0.0",
-  "description": "Parses a formatted number from a string and returns a number",
+  "description":
+    "Parses a formatted number from a string and returns a number.",
   "main": "lib/parseFormattedNumber.js",
-  "files": [
-    "lib"
-  ],
+  "files": ["lib"],
   "scripts": {
     "build": "babel --out-dir lib src",
     "precommit": "lint-staged",
