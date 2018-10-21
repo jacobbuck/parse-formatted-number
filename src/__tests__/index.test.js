@@ -1,4 +1,4 @@
-import parseFormattedNumber from '.';
+import parseFormattedNumber from '..';
 
 test('returns NaN when an empty value is passed', () => {
   expect(parseFormattedNumber('')).toBe(NaN);
