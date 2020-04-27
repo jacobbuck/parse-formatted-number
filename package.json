@@ -36,14 +36,14 @@
     "escape-string-regexp": "^1.0.5"
   },
   "devDependencies": {
-    "@babel/core": "^7.4.5",
-    "@babel/preset-env": "^7.4.5",
-    "husky": "^2.3.0",
-    "jest": "^24.8.0",
-    "lint-staged": "^8.1.7",
-    "prettier": "^1.17.1",
-    "rollup": "^1.13.1",
-    "rollup-plugin-babel": "^4.3.2"
+    "@babel/core": "^7.9.0",
+    "@babel/preset-env": "^7.9.5",
+    "husky": "^4.2.5",
+    "jest": "^25.4.0",
+    "lint-staged": "^10.1.7",
+    "prettier": "^2.0.5",
+    "rollup": "^2.7.2",
+    "rollup-plugin-babel": "^4.4.0"
   },
   "husky": {
     "hooks": {
