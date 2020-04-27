@@ -1,6 +1,6 @@
 {
   "name": "parse-formatted-number",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "Parses a formatted number from a string and returns a number.",
   "main": "lib/index.js",
   "files": [
