@@ -32,7 +32,6 @@
     "url": "https://github.com/jacobbuck/parse-formatted-number/issues"
   },
   "homepage": "https://github.com/jacobbuck/parse-formatted-number#readme",
-  "dependencies": {},
   "devDependencies": {
     "@babel/core": "^7.12.3",
     "@babel/preset-env": "^7.12.1",
@@ -42,10 +41,5 @@
     "prettier": "^2.1.2",
     "rollup": "^2.33.1",
     "rollup-plugin-babel": "^4.4.0"
-  },
-  "husky": {
-    "hooks": {
-      "pre-commit": "lint-staged"
-    }
   }
 }
