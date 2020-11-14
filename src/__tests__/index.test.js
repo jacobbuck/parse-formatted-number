@@ -52,3 +52,48 @@ test('returns NaN when an invalid string value is passed', () => {
   expect(parseFormattedNumber('123-456')).toBe(NaN);
   expect(parseFormattedNumber('-.')).toBe(NaN);
 });
+
+test('throws when options isn’t an object', () => {
+  expect(() => {
+    parseFormattedNumber('1', () => {});
+  }).toThrow(
+    new TypeError(
+      'Expected `options` to be of type `object` but received type `function`'
+    )
+  );
+});
+
+test('throws when options.decimal isn’t a string', () => {
+  expect(() => {
+    parseFormattedNumber('1', { decimal: 1 });
+  }).toThrow(
+    new TypeError(
+      'Expected property `decimal` to be of type `string` but received type `number` in `options`'
+    )
+  );
+});
+
+test('throws when options.decimal doesn’t have length of 1', () => {
+  expect(() => {
+    parseFormattedNumber('1', { decimal: ':)' });
+  }).toThrow(
+    new TypeError(
+      'Expected property `decimal` to have length `1`, got `:)` in `options`'
+    )
+  );
+});
+
+test('doesn’t typecheck in production', () => {
+  const previousEnv = Object.getOwnPropertyDescriptor(process, 'env');
+  process.env = { NODE_ENV: 'production' };
+
+  expect(() => {
+    parseFormattedNumber('1', () => {});
+  }).not.toThrow(
+    new TypeError(
+      'Expected `options` to be of type `object` but received type `function`'
+    )
+  );
+
+  Object.defineProperty(process, 'env', previousEnv);
+});
