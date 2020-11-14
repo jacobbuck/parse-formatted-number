@@ -5,8 +5,7 @@ Parses a formatted number from a string and returns a number.
 ## Usage
 
 ```js
-parseFormattedNumber(value);
-parseFormattedNumber(value, options);
+parseFormattedNumber(value[, options])
 ```
 
 ### Parameters
