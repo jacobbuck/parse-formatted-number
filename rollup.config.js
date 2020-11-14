@@ -15,6 +15,5 @@ export default {
       sourcemap: true,
     },
   ],
-  external: ['escape-string-regexp'],
   plugins: [babel()],
 };

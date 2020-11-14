@@ -1,5 +1,3 @@
-import escapeStringRegexp from 'escape-string-regexp';
-
 const parseFormattedNumber = (value, options = {}) => {
   const { decimal = '.' } = options;
 
@@ -11,7 +9,7 @@ const parseFormattedNumber = (value, options = {}) => {
     return value;
   }
 
-  const sanitize = new RegExp(`[^\\d\\-${escapeStringRegexp(decimal)}]*`, 'g');
+  const sanitize = new RegExp(`[^\\d\\-\${decimal}]*`, 'g');
 
   const unformatted = value
     .toString()
