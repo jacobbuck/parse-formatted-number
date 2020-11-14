@@ -5,7 +5,7 @@ const parseFormattedNumber = (value, options = {}) => {
     return value;
   }
 
-  if (typeof value !== 'string' || value === '') {
+  if (typeof value !== 'string') {
     return Number.NaN;
   }
 
@@ -13,11 +13,7 @@ const parseFormattedNumber = (value, options = {}) => {
 
   const unformatted = value.replace(sanitize, '').replace(decimal, '.');
 
-  if (!unformatted) {
-    return Number.NaN;
-  }
-
-  return Number(unformatted);
+  return unformatted === '' ? Number.NaN : Number(unformatted);
 };
 
 export default parseFormattedNumber;
