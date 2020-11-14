@@ -11,7 +11,8 @@ parseFormattedNumber(value[, options])
 ### Parameters
 
 - `value` The value you want to parse.
-- `options.decimal` decimal separator character, defaults to `"."`.
+- `options` optional object of the following options:
+  - `decimal` string decimal separator character, defaults to `"."`.
 
 ### Return value
 
