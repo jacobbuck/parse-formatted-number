@@ -5,14 +5,14 @@ Parses a formatted number from a string and returns a number.
 ## Usage
 
 ```js
-parseFormattedNumber(value)
-parseFormattedNumber(value, options)
+parseFormattedNumber(value);
+parseFormattedNumber(value, options);
 ```
 
 ### Parameters
 
 - `value` The value you want to parse.
-- `options.decimal` decimal separator character. defaults to `"."`.
+- `options.decimal` decimal separator character, defaults to `"."`.
 
 ### Return value
 
