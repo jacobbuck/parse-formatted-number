@@ -5,7 +5,7 @@ const parseFormattedNumber = (value, options = {}) => {
     return Number.NaN;
   }
 
-  if (typeof value === 'number' && isFinite(value)) {
+  if (Number.isFinite(value)) {
     return value;
   }
 
