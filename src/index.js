@@ -9,7 +9,7 @@ const parseFormattedNumber = (value, options = {}) => {
     return value;
   }
 
-  const sanitize = new RegExp(`[^\\d\\-\${decimal}]*`, 'g');
+  const sanitize = new RegExp(`[^\\d\\-\\${decimal}]*`, 'g');
 
   const unformatted = value
     .toString()
