@@ -20,7 +20,7 @@ const parseFormattedNumber = (value, options = {}) => {
     return Number.NaN;
   }
 
-  return new Number(unformatted).valueOf();
+  return Number(unformatted);
 };
 
 export default parseFormattedNumber;
