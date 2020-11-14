@@ -8,8 +8,12 @@
   ],
   "scripts": {
     "build": "rollup -c",
+    "coverage": "jest --coverage",
+    "format": "prettier --write .",
     "prepare": "npm run build",
-    "test": "jest"
+    "prepublishOnly": "npm run test",
+    "test": "jest",
+    "test:watch": "jest --watch"
   },
   "repository": {
     "type": "git",
