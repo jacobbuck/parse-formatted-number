@@ -1,12 +1,12 @@
 const parseFormattedNumber = (value, options = {}) => {
   const { decimal = '.' } = options;
 
-  if (value == null) {
-    return Number.NaN;
-  }
-
   if (Number.isFinite(value)) {
     return value;
+  }
+
+  if (typeof value !== 'string' || value === '') {
+    return Number.NaN;
   }
 
   const sanitize = new RegExp(`[^\\d\\-\\${decimal}]*`, 'g');
