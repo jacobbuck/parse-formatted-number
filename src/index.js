@@ -11,10 +11,7 @@ const parseFormattedNumber = (value, options = {}) => {
 
   const sanitize = new RegExp(`[^\\d\\-\\${decimal}]*`, 'g');
 
-  const unformatted = value
-    .toString()
-    .replace(sanitize, '')
-    .replace(decimal, '.');
+  const unformatted = value.replace(sanitize, '').replace(decimal, '.');
 
   if (!unformatted) {
     return Number.NaN;
