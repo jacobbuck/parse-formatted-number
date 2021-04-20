@@ -24,7 +24,6 @@
 
 ### Changed
 
-- Updated copyright in [LICENCE](./LICENCE).
 - Updated devDependencies.
 
 ## 1.0.3 - 2019-06-02
