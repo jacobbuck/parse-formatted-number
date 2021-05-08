@@ -14,8 +14,6 @@ const parseFormattedNumber = (value, options = {}) => {
     'Expected `options.decimal` to contain only one character'
   );
 
-  const { decimal = '.' } = options;
-
   if (Number.isFinite(value)) {
     return value;
   }
@@ -23,6 +21,8 @@ const parseFormattedNumber = (value, options = {}) => {
   if (typeof value !== 'string') {
     return Number.NaN;
   }
+
+  const { decimal = '.' } = options;
 
   const sanitize = new RegExp(`[^\\d\\-\\${decimal}]*`, 'g');
 
