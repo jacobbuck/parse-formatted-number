@@ -18,7 +18,7 @@ const parseFormattedNumber = (value, options = {}) => {
     return value;
   }
 
-  if (typeof value !== 'string') {
+  if (typeof value !== 'string' || value === '') {
     return Number.NaN;
   }
 
