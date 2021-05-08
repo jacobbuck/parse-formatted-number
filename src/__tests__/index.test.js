@@ -56,20 +56,14 @@ test('returns NaN when an invalid string value is passed', () => {
 test('throws when options isn’t an object', () => {
   expect(() => {
     parseFormattedNumber('1', () => {});
-  }).toThrow(
-    new TypeError(
-      'Expected `options` to be of type `object` but received type `function`'
-    )
-  );
+  }).toThrow(new Error('Invariant failed: Expected `options` to be an object'));
 });
 
 test('throws when options.decimal isn’t a string', () => {
   expect(() => {
     parseFormattedNumber('1', { decimal: 1 });
   }).toThrow(
-    new TypeError(
-      'Expected property `decimal` to be of type `string` but received type `number` in `options`'
-    )
+    new Error('Invariant failed: Expected `options.decimal` to be a string')
   );
 });
 
@@ -77,23 +71,8 @@ test('throws when options.decimal doesn’t have length of 1', () => {
   expect(() => {
     parseFormattedNumber('1', { decimal: ':)' });
   }).toThrow(
-    new TypeError(
-      'Expected property `decimal` to have length `1`, got `:)` in `options`'
+    new Error(
+      'Invariant failed: Expected `options.decimal` to contain only one character'
     )
   );
-});
-
-test('doesn’t typecheck in production', () => {
-  const previousEnv = Object.getOwnPropertyDescriptor(process, 'env');
-  process.env = { NODE_ENV: 'production' };
-
-  expect(() => {
-    parseFormattedNumber('1', () => {});
-  }).not.toThrow(
-    new TypeError(
-      'Expected `options` to be of type `object` but received type `function`'
-    )
-  );
-
-  Object.defineProperty(process, 'env', previousEnv);
 });

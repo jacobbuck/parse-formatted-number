@@ -1,21 +1,18 @@
+import invariant from 'tiny-invariant';
+
 const parseFormattedNumber = (value, options = {}) => {
-  if (process.env.NODE_ENV !== 'production') {
-    if (typeof options !== 'object') {
-      throw new TypeError(
-        `Expected \`options\` to be of type \`object\` but received type \`${typeof options}\``
-      );
-    }
-    if (typeof options.decimal !== 'string' && options.decimal !== undefined) {
-      throw new TypeError(
-        `Expected property \`decimal\` to be of type \`string\` but received type \`${typeof options.decimal}\` in \`options\``
-      );
-    }
-    if (typeof options.decimal === 'string' && options.decimal.length !== 1) {
-      throw new TypeError(
-        `Expected property \`decimal\` to have length \`1\`, got \`${options.decimal}\` in \`options\``
-      );
-    }
-  }
+  invariant(
+    typeof options === 'object' && options !== null,
+    'Expected `options` to be an object'
+  );
+  invariant(
+    typeof options.decimal === 'string' || options.decimal === undefined,
+    'Expected `options.decimal` to be a string'
+  );
+  invariant(
+    typeof options.decimal !== 'string' || options.decimal.length === 1,
+    'Expected `options.decimal` to contain only one character'
+  );
 
   const { decimal = '.' } = options;
 
