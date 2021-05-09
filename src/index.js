@@ -18,17 +18,21 @@ const parseFormattedNumber = (value, options = {}) => {
     return value;
   }
 
-  if (typeof value !== 'string' || value === '') {
+  if (typeof value !== 'string') {
     return Number.NaN;
   }
 
   const { decimal = '.' } = options;
 
-  const sanitize = new RegExp(`[^\\d\\-\\${decimal}]*`, 'g');
+  const unformatted = value
+    .replace(new RegExp(`[^\\d\\-\\${decimal}]*`, 'g'), '')
+    .replace(decimal, '.');
 
-  const unformatted = value.replace(sanitize, '').replace(decimal, '.');
+  if (unformatted === '') {
+    return Number.NaN;
+  }
 
-  return unformatted === '' ? Number.NaN : Number(unformatted);
+  return Number(unformatted);
 };
 
 export default parseFormattedNumber;
