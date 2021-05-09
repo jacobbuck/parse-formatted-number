@@ -53,12 +53,6 @@ test('returns NaN when an invalid string value is passed', () => {
   expect(parseFormattedNumber('-.')).toBe(NaN);
 });
 
-test('throws when options isn’t an object', () => {
-  expect(() => {
-    parseFormattedNumber('1', () => {});
-  }).toThrow(new Error('Invariant failed: Expected `options` to be an object'));
-});
-
 test('throws when options.decimal isn’t a string', () => {
   expect(() => {
     parseFormattedNumber('1', { decimal: 1 });

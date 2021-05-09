@@ -1,16 +1,12 @@
 import invariant from 'tiny-invariant';
 
-const parseFormattedNumber = (value, options = {}) => {
+const parseFormattedNumber = (value, { decimal = '.' } = {}) => {
   invariant(
-    typeof options === 'object' && options !== null,
-    'Expected `options` to be an object'
-  );
-  invariant(
-    typeof options.decimal === 'string' || options.decimal === undefined,
+    typeof decimal === 'string',
     'Expected `options.decimal` to be a string'
   );
   invariant(
-    typeof options.decimal !== 'string' || options.decimal.length === 1,
+    decimal.length === 1,
     'Expected `options.decimal` to contain only one character'
   );
 
@@ -21,8 +17,6 @@ const parseFormattedNumber = (value, options = {}) => {
   if (typeof value !== 'string') {
     return Number.NaN;
   }
-
-  const { decimal = '.' } = options;
 
   const unformatted = value
     .replace(new RegExp(`[^\\d\\-\\${decimal}]*`, 'g'), '')
