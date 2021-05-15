@@ -1,56 +1,61 @@
 import parseFormattedNumber from '..';
 
 test('returns NaN when an passed empty value', () => {
-  expect(parseFormattedNumber('')).toBe(NaN);
-  expect(parseFormattedNumber(null)).toBe(NaN);
-  expect(parseFormattedNumber(undefined)).toBe(NaN);
+  ['', null, undefined].forEach((value) => {
+    expect(parseFormattedNumber(value)).toBeNaN();
+  });
 });
 
 test('returns a number when passed a number', () => {
-  expect(parseFormattedNumber(123)).toBe(123);
-  expect(parseFormattedNumber(123.123456789)).toBe(123.123456789);
-  expect(parseFormattedNumber(0.123)).toBe(0.123);
-  expect(parseFormattedNumber(-123)).toBe(-123);
-  expect(parseFormattedNumber(-123.123456789)).toBe(-123.123456789);
-  expect(parseFormattedNumber(-0.123)).toBe(-0.123);
-  expect(parseFormattedNumber(0)).toBe(0);
+  [123, 123.123456789, 0.123, -123, -123.123456789, -0.123, 0].forEach(
+    (value) => {
+      expect(parseFormattedNumber(value)).toBe(value);
+    }
+  );
 });
 
 test('returns a number when passed a string', () => {
-  expect(parseFormattedNumber('123')).toBe(123);
-  expect(parseFormattedNumber('123.45')).toBe(123.45);
-  expect(parseFormattedNumber('123.123456789')).toBe(123.123456789);
-  expect(parseFormattedNumber('0.123')).toBe(0.123);
-  expect(parseFormattedNumber('0')).toBe(0);
+  [
+    ['123', 123],
+    ['123.45', 123.45],
+    ['123.123456789', 123.123456789],
+    ['0.123', 0.123],
+    ['0', 0],
+  ].forEach(([value, expected]) => {
+    expect(parseFormattedNumber(value)).toBe(expected);
+  });
 });
 
 test('returns a number when passed a string with formatting', () => {
-  expect(parseFormattedNumber('NZD $123.00')).toBe(123);
-  expect(parseFormattedNumber('12,345,678.90')).toBe(12345678.9);
-  expect(parseFormattedNumber('12 345 678.90')).toBe(12345678.9);
-  expect(parseFormattedNumber("12'345'678.90")).toBe(12345678.9);
-  expect(parseFormattedNumber('42% per annum')).toBe(42);
-  expect(parseFormattedNumber('.123')).toBe(0.123);
-  expect(parseFormattedNumber('-.456')).toBe(-0.456);
-  expect(parseFormattedNumber('789.')).toBe(789);
+  [
+    ['NZD $123.00', 123],
+    ['12,345,678.90', 12345678.9],
+    ['12 345 678.90', 12345678.9],
+    ["12'345'678.90", 12345678.9],
+    ['42% per annum', 42],
+    ['.123', 0.123],
+    ['-.456', -0.456],
+    ['789.', 789],
+  ].forEach(([value, expected]) => {
+    expect(parseFormattedNumber(value)).toBe(expected);
+  });
 });
 
 test('returns a number when passed a string with custom decimal separator', () => {
-  expect(parseFormattedNumber('123,0', { decimal: ',' })).toBe(123);
-  expect(parseFormattedNumber('12.345.678,90', { decimal: ',' })).toBe(
-    12345678.9
-  );
-  expect(parseFormattedNumber("12.345.678'90", { decimal: "'" })).toBe(
-    12345678.9
-  );
-  expect(parseFormattedNumber('0·123', { decimal: '·' })).toBe(0.123);
+  [
+    ['123,0', ',', 123],
+    ['12.345.678,90', ',', 12345678.9],
+    ["12.345.678'90", "'", 12345678.9],
+    ['0·123', '·', 0.123],
+  ].forEach(([value, decimal, expected]) => {
+    expect(parseFormattedNumber(value, { decimal })).toBe(expected);
+  });
 });
 
-test('returns NaN when passed an invalid string value', () => {
-  expect(parseFormattedNumber('blah')).toBe(NaN);
-  expect(parseFormattedNumber('3.2.1')).toBe(NaN);
-  expect(parseFormattedNumber('123-456')).toBe(NaN);
-  expect(parseFormattedNumber('-.')).toBe(NaN);
+test('returns NaN when passed an invalid string', () => {
+  ['blah', '3.2.1', '123-456', '-.'].forEach((value) => {
+    expect(parseFormattedNumber(value)).toBeNaN();
+  });
 });
 
 test('throws when options.decimal isn’t a string', () => {
