@@ -1,11 +1,5 @@
 import parseFormattedNumber from '..';
 
-test('returns NaN when an passed empty value', () => {
-  ['', null, undefined].forEach((value) => {
-    expect(parseFormattedNumber(value)).toBeNaN();
-  });
-});
-
 test('returns a number when passed a number', () => {
   [123, 123.123456789, 0.123, -123, -123.123456789, -0.123, 0].forEach(
     (value) => {
@@ -49,6 +43,12 @@ test('returns a number when passed a string with custom decimal separator', () =
     ['0·123', '·', 0.123],
   ].forEach(([value, decimal, expected]) => {
     expect(parseFormattedNumber(value, { decimal })).toBe(expected);
+  });
+});
+
+test('returns NaN when an passed empty value', () => {
+  ['', null, undefined].forEach((value) => {
+    expect(parseFormattedNumber(value)).toBeNaN();
   });
 });
 
